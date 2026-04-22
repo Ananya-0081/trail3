@@ -12,9 +12,9 @@ app.use(express.json());
 app.use(cors());
 
 // ✅ DB CONNECTION
-mongoose.connect("mongodb+srv://ananya2428cseai363_db_user:Pvhl0YbGBbUtDRWC@cluster0.e2usukz.mongodb.net/?appName=Cluster0")
-.then(()=>console.log("DB Connected"))
-.catch(err=>console.log(err));
+mongoose.connect(process.env.MONGO_URI)
+  .then(()=>console.log("DB Connected"))
+  .catch(err=>console.log(err));
 
 // ✅ USER MODEL
 const User = mongoose.model("User", {
