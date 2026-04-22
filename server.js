@@ -7,18 +7,17 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 
+const app = express();   // ✅ FIRST create app
+
+app.use(express.json()); // ✅ THEN middleware
 app.use(cors({
   origin: "*"
 }));
 
-const app = express();
-app.use(express.json());
-app.use(cors());
-
 // ✅ DB CONNECTION
 mongoose.connect(process.env.MONGO_URI)
-  .then(()=>console.log("DB Connected"))
-  .catch(err=>console.log(err));
+  .then(() => console.log("DB Connected"))
+  .catch(err => console.log(err));
 
 // ✅ USER MODEL
 const User = mongoose.model("User", {
