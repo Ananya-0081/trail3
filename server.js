@@ -6,6 +6,11 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
+const cors = require("cors");
+
+app.use(cors({
+  origin: "*"
+}));
 
 const app = express();
 app.use(express.json());
